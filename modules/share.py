@@ -18,6 +18,8 @@ need to set environment variable
 'file_id' : string
 'send_notification' : boolean
 'email_message' : string
+
+'verify_code': string
 """
 
 def get_token():
@@ -45,7 +47,13 @@ def get_token():
         return "500"
 
 
-def share_task(email_address=None):
+def share_task(email_address=None, verify_code=None):
+
+    try:
+        if verify_code != os.environ['verify_code']:
+            return "400"
+    except KeyError:
+        return "500"
 
     file_id = os.environ['file_id']
 
@@ -56,7 +64,7 @@ def share_task(email_address=None):
     token = get_token()
 
     if token == "500":
-        return "ERROR"
+        return "500"
     
     header = {
         "Content-Type": "application/json",
@@ -71,5 +79,8 @@ def share_task(email_address=None):
 
     data = json.dumps(data)
     res = requests.post(PERMISSION_URL, headers=header, data=data)
+
+    if res.status_code != 200:
+        return "400"
 
     return res.json()

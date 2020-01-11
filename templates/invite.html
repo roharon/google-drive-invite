@@ -33,8 +33,7 @@
                         </div>
                         <div class="field is-grouped">
                             <p class="control is-expanded has-icons-left">
-                                <input class="is-rounded input" type="text" id="code" placeholder="Verify Invite Code"
-                                    disabled>
+                                <input class="is-rounded input" type="text" id="code" placeholder="Verify Invite Code">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-lock"></i>
                                 </span>
@@ -63,10 +62,10 @@
         evt.preventDefault();
 
         var data = {
-            email: email.value
+            email: email.value,
+            verify_code: code.value
         }
 
-        console.log(data)
         fetch("/invite", {
             method: "POST",
             headers: new Headers({

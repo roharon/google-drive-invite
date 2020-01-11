@@ -45,9 +45,8 @@ def get_token():
         return "500"
 
 
-def share_task():
+def share_task(email_address=None):
 
-    email_address = request.form['email']
     file_id = os.environ['file_id']
 
     PERMISSION_URL = "https://www.googleapis.com/drive/v3/files/" + file_id + "/permissions?" \

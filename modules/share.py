@@ -50,7 +50,7 @@ def share_task():
     email_address = request.form['email']
     file_id = os.environ['file_id']
 
-    PERMISSION_URL = "https://www.googleapis.com/drive/v3/files/" + file_id + "/permissions" \
+    PERMISSION_URL = "https://www.googleapis.com/drive/v3/files/" + file_id + "/permissions?" \
         + "&sendNotificationEmail=" + os.environ['send_notification'] \
         + "&emailMessage=" + os.environ['email_message']
 
@@ -72,5 +72,5 @@ def share_task():
 
     data = json.dumps(data)
     res = requests.post(PERMISSION_URL, headers=header, data=data)
-    
+
     return res.json()

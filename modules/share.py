@@ -18,6 +18,7 @@ need to set environment variable
 'file_id' : string
 'send_notification' : boolean
 'email_message' : string
+'role' : string - "owner", "organizer", "fileOrganizer", "writer", "commenter", "reader"
 
 'verify_code': string
 """
@@ -72,7 +73,7 @@ def share_task(email_address=None, verify_code=None):
     }
 
     data = {
-        "role": "writer",
+        "role": os.environ['role']
         "type": "user",
         "emailAddress": email_address
     }

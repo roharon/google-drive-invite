@@ -25,7 +25,7 @@
         "email_message": {
             "description": "if send notification, then you can set message",
             "value": "Welcome to our drive folder",
-            "required": "false"
+            "required": false
         },
         "role": {
             "description": "Invited people's drive permission, ['owner', 'organizer', 'fileOrganizer', 'writer', 'commenter', 'reader']"

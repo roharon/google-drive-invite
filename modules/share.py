@@ -12,7 +12,6 @@ need to set environment variable
 """
 
 def get_token():
-    EXCHANGE_URL = "www.googleapis.com/oauth2/v4/token"
     redirect_uri = request.host + "/code"
 
     headers = {

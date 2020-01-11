@@ -2,7 +2,12 @@
     "name": "google-drive-invite",
     "description": "Inivite memeber to Google Drive automate",
     "repository": "https://github.com/roharon/google-drive-invite",
-    "keywords": ["python", "flask", "static"],
+    "keywords": [
+        "python",
+        "flask",
+        "static",
+        "automate"
+    ],
     "env": {
         "client_id": {
             "description": "Your Google API Oauth Client id",
@@ -30,6 +35,10 @@
         "role": {
             "description": "Invited people's drive permission, ['owner', 'organizer', 'fileOrganizer', 'writer', 'commenter', 'reader']"
         }
+    },
 
-    }
+    "scripts": {
+        "postdeploy": "nohup flask run &"
+    },
+    "success_url": "/"
 }

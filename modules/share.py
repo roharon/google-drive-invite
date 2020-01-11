@@ -73,7 +73,7 @@ def share_task(email_address=None, verify_code=None):
     }
 
     data = {
-        "role": os.environ['role']
+        "role": os.environ['role'],
         "type": "user",
         "emailAddress": email_address
     }

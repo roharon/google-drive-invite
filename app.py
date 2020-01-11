@@ -1,5 +1,5 @@
-from flask import Flask, render_template
-from modules import share
+from flask import Flask, render_template, request
+from modules.share import share_task
 app = Flask(__name__)
 
 
@@ -9,4 +9,4 @@ def invite_get():
 
 @app.route("/invite", methods=['POST'])
 def invite_post():
-    return share.share_task()
+    return share_task(request.json['email'])

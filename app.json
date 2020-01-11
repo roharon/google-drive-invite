@@ -1,0 +1,35 @@
+{
+    "name": "google-drive-invite",
+    "description": "Inivite memeber to Google Drive automate",
+    "repository": "https://github.com/roharon/google-drive-invite",
+    "keywords": ["python", "flask", "static"],
+    "env": {
+        "client_id": {
+            "description": "Your Google API Oauth Client id",
+            "value": "YOUR CLIENT ID"
+        },
+        "client_secret": {
+            "description": "Your Google API Oauth Client secret key"
+        },
+        "refresh_token": {
+            "description": "Your Google API Oauth's refresh token"
+        },
+        "file_id": {
+            "description": "https://drive.google.com/drive/folders/<file_id>",
+            "value": "example31gt1i3jtexample"
+        },
+        "send_notification": {
+            "description": "if true, send email that you invite the drive",
+            "value": "true | false"
+        },
+        "email_message": {
+            "description": "if send notification, then you can set message",
+            "value": "Welcome to our drive folder",
+            "required": "false"
+        },
+        "role": {
+            "description": "Invited people's drive permission, ['owner', 'organizer', 'fileOrganizer', 'writer', 'commenter', 'reader']"
+        }
+
+    }
+}

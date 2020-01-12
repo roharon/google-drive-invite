@@ -32,6 +32,9 @@
             "value": "Welcome to our drive folder",
             "required": false
         },
+        "verify_code": {
+            "description": "Set password for access invite"
+        },
         "role": {
             "description": "Invited people's drive permission, ['owner', 'organizer', 'fileOrganizer', 'writer', 'commenter', 'reader']"
         }

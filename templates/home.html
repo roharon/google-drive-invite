@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>drive-google-invite</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="dist/vanilla-notify.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+    <section class="hero is-info is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-6 is-offset-3">
+                    <h1 class="title">
+                        drive-google-invite
+                    </h1>
+                    <h2 class="subtitle">
+                        Invite people to Google Drive automate
+                    </h2>
+                    <div class="box">
+                        <div class="field is-grouped">
+                            <p class="control is-expanded has-icons-left">
+                                <input class="input is-rounded is-hovered" id="email" type="email"
+                                    placeholder="Enter your email">
+
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field is-grouped">
+                            <p class="control is-expanded has-icons-left">
+                                <input class="is-rounded input" type="text" id="code" placeholder="Verify Invite Code">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
+                            <p class="control">
+                                <a class="button is-info" id="submit">
+                                    Invite
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</body>
+<script src="vanilla-notify.js"></script>
+<script>
+    var email = document.getElementById("email")
+    var code = document.getElementById("code")
+    var submit = document.getElementById("submit")
+
+    submit.addEventListener("click", function (evt) {
+
+        evt.preventDefault();
+        
+        var data = {
+            email: email.value,
+            verify_code: code.value
+        }
+
+        fetch("/invite", {
+            method: "POST",
+            headers: new Headers({
+                "content-type": "application/json"
+            }),
+            body: JSON.stringify(data)
+        }).then(res => {
+            if(res.redirected){
+                window.location.href = res.url;
+            }
+            else if(res.status==400){
+            }
+        });
+    })
+</script>
+</html>

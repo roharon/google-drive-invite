@@ -7,6 +7,8 @@ import os
 need to set environment variable
 
 # on get_token Funtion
+'title': string
+'subtitle': string,
 
 'client_id' : string
 'client_secret' : string
@@ -24,8 +26,6 @@ need to set environment variable
 """
 
 def get_token():
-
-    redirect_uri = request.host + "/code"
 
     headers = {
         "Content-Type": "application/x-www-form-urlencoded"

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>drive-google-invite</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <link rel="stylesheet" href="dist/vanilla-notify.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
@@ -40,9 +39,7 @@
                                 </span>
                             </p>
                             <p class="control">
-                                <a class="button is-info" id="submit">
-                                    Invite
-                                </a>
+                                <button class="button is-info" id="submit" title="submit">Invite</button>
                             </p>
                         </div>
                     </div>
@@ -57,10 +54,15 @@
     var code = document.getElementById("code")
     var submit = document.getElementById("submit")
 
-    submit.addEventListener("click", function (evt) {
+    var btn_origin_color = submit.style.backgroundColor;
+
+    var click_submit = submit.addEventListener("click", request_submit);
+    email.addEventListener('input', inputEmail);
+
+    function request_submit(evt) {
 
         evt.preventDefault();
-        
+
         var data = {
             email: email.value,
             verify_code: code.value
@@ -73,12 +75,36 @@
             }),
             body: JSON.stringify(data)
         }).then(res => {
-            if(res.redirected){
+            console.log(res)
+            if (res.redirected) {
                 window.location.href = res.url;
             }
-            else if(res.status==400){
+            else if (res.status == 400) {
             }
         });
-    })
+    }
+
+    function inputEmail(e) {
+        var email = document.getElementById("email")
+
+        const input = e.target.value;
+        // Check if the input is NOT blank first, and if it's not, make sure it matches our regex test
+        // Why: because we don't want to start validating before the user has started typing; after that it's fair game
+        if (input && /(^\w.*@\w+\.\w)/.test(input)) {
+            submit.addEventListener("click", request_submit);
+            email.classList.add('is-success');
+            email.classList.remove('is-danger');
+
+            submit.style.backgroundColor = btn_origin_color;
+
+        } else {
+            submit.removeEventListener("click", request_submit);
+            email.classList.add('is-danger');
+            email.classList.remove('is-success');
+
+            submit.style.backgroundColor = 'grey';
+        }
+    };
 </script>
+
 </html>

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>drive-google-invite</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <link rel="stylesheet" href="dist/vanilla-notify.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
@@ -57,10 +56,12 @@
     var code = document.getElementById("code")
     var submit = document.getElementById("submit")
 
+    email.addEventListener('focusout', inputEmail);
+
     submit.addEventListener("click", function (evt) {
 
         evt.preventDefault();
-        
+
         var data = {
             email: email.value,
             verify_code: code.value
@@ -73,12 +74,28 @@
             }),
             body: JSON.stringify(data)
         }).then(res => {
-            if(res.redirected){
+            console.log(res)
+            if (res.redirected) {
                 window.location.href = res.url;
             }
-            else if(res.status==400){
+            else if (res.status == 400) {
             }
         });
     })
+
+    function inputEmail(e) {
+        var email = document.getElementById("email")
+
+        const input = e.target.value;
+        // Check if the input is NOT blank first, and if it's not, make sure it matches our regex test
+        // Why: because we don't want to start validating before the user has started typing; after that it's fair game
+        if (input && /(^\w.*@\w+\.\w)/.test(input)) {
+            email.classList.add('is-success');
+            email.classList.remove('is-danger');
+        } else {
+            email.classList.add('is-danger');
+            email.classList.remove('is-success');
+        }
+    };
 </script>
 </html>

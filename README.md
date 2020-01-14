@@ -62,13 +62,9 @@ It will be used to config deploy enviroment variable
 
 9-2. Paste ***Client ID, Secret*** on OAuth 2.0 Configuration(check Use Your own Oauth credentials) - On right section.
 
-9-3.Paste 
-`https://www.googleapis.com/auth/drive.file` on left input Button.
-Or you can select ***`Drive API V3 - ~~/auth/drive.file`***
+9-3.Select ***Drive API V3's*** *`https://www.googleapis.com/auth/drive`*, *`https://www.googleapis.com/auth/drive.file`*
 
 And, Click **Authorize APIs** Button!
-
-<img style="display:block margin:auto" src="https://user-images.githubusercontent.com/4939738/72214178-737d6c00-3540-11ea-970d-8a3269e86870.png" width="500" height="300">
 
 
 9-4. Click **`Exchange authorization code for tokens`**

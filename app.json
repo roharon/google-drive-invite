@@ -8,7 +8,17 @@
         "static",
         "automate"
     ],
+
     "env": {
+        "title": {
+            "description": "Main Page's title",
+            "value": "TITLE passage"
+        },
+        "subtitle": {
+            "description": "Main Page's subtitle",
+            "value": "SUBTITLE passage",
+            "required": false
+        },
         "client_id": {
             "description": "Your Google API Oauth Client id",
             "value": "YOUR CLIENT ID"
@@ -19,8 +29,11 @@
         "refresh_token": {
             "description": "Your Google API Oauth's refresh token"
         },
+        "role": {
+            "description": "Invited people's drive permission, ['owner', 'organizer', 'fileOrganizer', 'writer', 'commenter', 'reader']"
+        },
         "file_id": {
-            "description": "https://drive.google.com/drive/folders/<file_id>",
+            "description": "https://drive.google.com/drive/folders/<file_id>\nor https://docs.google.com/document/d/<file_id>",
             "value": "example31gt1i3jtexample"
         },
         "send_notification": {
@@ -34,9 +47,6 @@
         },
         "verify_code": {
             "description": "Set password for access invite"
-        },
-        "role": {
-            "description": "Invited people's drive permission, ['owner', 'organizer', 'fileOrganizer', 'writer', 'commenter', 'reader']"
         }
     },
 

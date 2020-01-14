@@ -18,7 +18,7 @@ def invite_result():
 def invite_post():
     response = share_task(email_address=request.json['email'], verify_code=request.json['verify_code'])
 
-    if type(response) == "str":
+    if type(response) == str:
         # if status code return
         return redirect('/error')
     else:

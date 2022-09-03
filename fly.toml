@@ -1,0 +1,41 @@
+# fly.toml file generated for google-drive-invite on 2022-09-03T20:41:50+09:00
+
+app = "google-drive-invite"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[env]
+  title = "google-drive-invite"
+  subtitle = "Invite people to Google drive without your inconvenience"
+
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
+
+[[services]]
+  http_checks = []
+  internal_port = 8080
+  processes = ["app"]
+  protocol = "tcp"
+  script_checks = []
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"

@@ -1,4 +1,4 @@
-# google-drive-invite [![](https://img.shields.io/github/stars/roharon/google-drive-invite.svg?style=social)](https://github.com/roharon/google-drive-invite/stargazers) ![](https://img.shields.io/github/last-commit/roharon/google-drive-invite) ![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge&svg=1)
+# google-drive-invite [![Fly.io Deploy](https://github.com/roharon/google-drive-invite/actions/workflows/fly-io-deployment.yml/badge.svg)](https://github.com/roharon/google-drive-invite/actions/workflows/fly-io-deployment.yml)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 

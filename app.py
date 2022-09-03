@@ -10,9 +10,11 @@ def home():
     data = dict(title=os.environ['title'], subtitle=os.environ['subtitle'])
     return render_template("home.html", data=data)
 
+
 @app.route("/invite", methods=['GET'])
 def invite_result():
     return render_template("invite.html", file_id=os.environ['file_id'])
+
 
 @app.route("/invite", methods=['POST'])
 def invite_post():
@@ -24,9 +26,11 @@ def invite_post():
     else:
         return redirect('/invite')
 
+
 @app.route("/error", methods=['GET'])
 def error():
     return render_template("error.html")
+
 
 if __name__ == "__main__":
     app.run("0.0.0.0", "80")
